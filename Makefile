@@ -6,9 +6,9 @@ RENVFILES = renv.lock renv/activate.R renv/settings.json
 
 # Final HTML report target
 report/finalproject2.html: code/04_render_report.R \
-													report/finalproject2.Rmd \
-													output/table_one.rds \
-													output/histogram.png
+                          report/finalproject2.Rmd \
+                          output/table_one.rds \
+                          output/histogram.png
 	Rscript code/04_render_report.R
 
 # Data cleaning
@@ -23,10 +23,10 @@ output/table_one.rds output/histogram.png: \
 	Rscript code/01_make_table1.R && \
 	Rscript code/02_make_scatter.R
 	
-# Run docker container to generate report 
+# Run docker container to generate report
 .PHONY: report
-report:
-	docker run --rm -v "$(PWD):/home/rstudio/project" feiran924/bank-marketing-final:latest make all
+report: 
+	docker run --rm -v "$(PWD)/report:/project/report" feiran924/bank-marketing-report
 
 # Clean all generated files
 .PHONY: clean

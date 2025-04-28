@@ -50,7 +50,7 @@ The container automatically mounts your local report directory to collect the ou
 
 ##### Run the analysis and generate report
 ```
-docker run --rm -v "$(pwd):/home/rstudio/project" feiran924/bank-marketing-final:latest make all
+docker run --rm -v "$(PWD)/report:/project/report" feiran924/bank-marketing-report
 ```
 ### Environment Configuration
 
